@@ -1,0 +1,795 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOUDRIFY -A Premium Agency</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="ph-fill ph-squares-four"></i> CLOUDRIFY
+            </div>
+            <div class="loader-progress-container">
+                <div class="loader-progress-bar"></div>
+            </div>
+            <div class="loader-percentage">0%</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="ph-fill ph-squares-four"></i>CLOUDRIFY
+        </div>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="nav-cta">
+            <a href="#contact" class="btn-glass"><i class="ph ph-paper-plane-tilt"></i> Get in Touch</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="hero-bg.png" alt="Abstract Background">
+        </div>
+        <div class="hero-content">
+            <div class="pill-label">
+                <span class="dot"></span> Building Modern Digital Solutions
+            </div>
+            <h1>Websites that you<br>need Indeed</h1>
+            <p>Elevate your business with custom websites and digital solutions.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-outline">Get Started Now</a>
+                <a href="#projects" class="btn-outline">See Projects</a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll down</span>
+            <div class="mouse-icon">
+                <div class="wheel"></div>
+            </div>
+            <span>to see projects</span>
+        </div>
+    </section>
+
+    <!-- Logo Marquee -->
+    <div class="logo-marquee">
+        <div class="marquee-content">
+            <span><i class="ph ph-asterisk"></i> Nexus</span>
+            <span><i class="ph ph-infinity"></i> Prism</span>
+            <span><i class="ph ph-circle-notch"></i> Zenith</span>
+            <span><i class="ph ph-drop"></i> Apex</span>
+            <span><i class="ph ph-asterisk"></i> Nexus</span>
+            <span><i class="ph ph-infinity"></i> Prism</span>
+            <span><i class="ph ph-circle-notch"></i> Zenith</span>
+            <span><i class="ph ph-drop"></i> Apex</span>
+            <span><i class="ph ph-asterisk"></i> Nexus</span>
+            <span><i class="ph ph-infinity"></i> Prism</span>
+            <span><i class="ph ph-circle-notch"></i> Zenith</span>
+            <span><i class="ph ph-drop"></i> Apex</span>
+            <span><i class="ph ph-asterisk"></i> Nexus</span>
+            <span><i class="ph ph-infinity"></i> Prism</span>
+            <span><i class="ph ph-circle-notch"></i> Zenith</span>
+            <span><i class="ph ph-drop"></i> Apex</span>
+            <span><i class="ph ph-asterisk"></i> Nexus</span>
+            <span><i class="ph ph-infinity"></i> Prism</span>
+            <span><i class="ph ph-circle-notch"></i> Zenith</span>
+            <span><i class="ph ph-drop"></i> Apex</span>
+            <span><i class="ph ph-asterisk"></i> Nexus</span>
+            <span><i class="ph ph-infinity"></i> Prism</span>
+            <span><i class="ph ph-circle-notch"></i> Zenith</span>
+            <span><i class="ph ph-drop"></i> Apex</span>
+            <span><i class="ph ph-asterisk"></i> Nexus</span>
+            <span><i class="ph ph-infinity"></i> Prism</span>
+            <span><i class="ph ph-circle-notch"></i> Zenith</span>
+            <span><i class="ph ph-drop"></i> Apex</span>
+            <span><i class="ph ph-asterisk"></i> Nexus</span>
+            <span><i class="ph ph-infinity"></i> Prism</span>
+            <span><i class="ph ph-circle-notch"></i> Zenith</span>
+            <span><i class="ph ph-drop"></i> Apex</span>
+            <span><i class="ph ph-asterisk"></i> Nexus</span>
+            <span><i class="ph ph-infinity"></i> Prism</span>
+            <span><i class="ph ph-circle-notch"></i> Zenith</span>
+            <span><i class="ph ph-drop"></i> Apex</span>
+            <span><i class="ph ph-asterisk"></i> Nexus</span>
+            <span><i class="ph ph-infinity"></i> Prism</span>
+            <span><i class="ph ph-circle-notch"></i> Zenith</span>
+            <span><i class="ph ph-drop"></i> Apex</span>
+        </div>
+    </div>
+
+
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="project-feature">
+            <img src="project-3.png" alt="About highlight image">
+            <a href="#about" class="center-pill" style="text-decoration: none; cursor: pointer;">About Us</a>
+        </div>
+        <div class="project-grid">
+            <div class="project-column column-left">
+                <div class="project-card">
+                    <img src="project-1.png" alt="Branding device project">
+                    <div class="project-info">
+                        <div class="close-project-info">×</div>
+                        <h3 class="project-title">Branding Device</h3>
+                        <p class="project-description">A comprehensive branding project featuring modern design
+                            principles and innovative device mockups. Created a cohesive brand identity across multiple
+                            platforms.</p>
+                    </div>
+                    <div class="project-overlay">
+                        <a href="#" class="btn-glass-sm view-case-study">View Casestudy <i
+                                class="ph ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card tall">
+                    <img src="project-2.png" alt="Packaging exploration">
+                    <div class="project-info">
+                        <div class="close-project-info"></div>
+                        <h3 class="project-title">Packaging Exploration</h3>
+                        <p class="project-description">An innovative packaging design exploration that combines
+                            sustainability with aesthetic appeal. Developed unique packaging solutions for premium
+                            products.</p>
+                    </div>
+                    <div class="project-overlay">
+                        <a href="#" class="btn-glass-sm view-case-study">View Casestudy <i
+                                class="ph ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="project-3.png" alt="Product mockup board">
+                    <div class="project-info">
+                        <div class="close-project-info">×</div>
+                        <h3 class="project-title">Product Mockup</h3>
+                        <p class="project-description">Professional product mockup showcasing cutting-edge design
+                            techniques and photorealistic rendering. Perfect blend of creativity and technical
+                            excellence.</p>
+                    </div>
+                    <div class="project-overlay">
+                        <a href="#" class="btn-glass-sm view-case-study">View Casestudy <i
+                                class="ph ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-column column-center">
+                <div class="project-card hero-card">
+                    <img src="project-3.png" alt="Profile highlight">
+                    <a href="#about" class="center-pill" style="text-decoration: none; cursor: pointer;">About Us</a>
+                </div>
+                <div class="project-card tall">
+                    <img src="project-4.png" alt="Minimal product concept">
+                    <div class="project-info">
+                        <div class="close-project-info">x</div>
+                        <h3 class="project-title">Minimal Concept</h3>
+                        <p class="project-description">Minimalist design approach focused on simplicity and
+                            functionality. Clean aesthetics meet user-centric design principles.</p>
+                    </div>
+                    <div class="project-overlay">
+                        <a href="#" class="btn-glass-sm view-case-study">View Casestudy <i
+                                class="ph ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="project-1.png" alt="Creative prototype">
+                    <div class="project-info">
+                        <div class="close-project-info">×</div>
+                        <h3 class="project-title">Branding Device</h3>
+                        <p class="project-description">A comprehensive branding project featuring modern design
+                            principles and innovative device mockups. Created a cohesive brand identity across multiple
+                            platforms.</p>
+                    </div>
+                    <div class="project-overlay">
+                        <a href="#" class="btn-glass-sm view-case-study">View Casestudy <i
+                                class="ph ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-column column-right">
+                <div class="project-card">
+                    <img src="project-4.png" alt="Beauty packaging">
+                    <div class="project-info">
+                        <div class="close-project-info"></div>
+                        <h3 class="project-title">Beauty Packaging</h3>
+                        <p class="project-description">Elegant packaging design for premium beauty products. Luxury
+                            aesthetics combined with functional excellence.</p>
+                    </div>
+                    <div class="project-overlay">
+                        <a href="#" class="btn-glass-sm view-case-study">View Casestudy <i
+                                class="ph ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card tall">
+                    <img src="project-2.png" alt="Product detail shot">
+                    <div class="project-info">
+                        <div class="close-project-info"></div>
+                        <h3 class="project-title">Packaging Exploration</h3>
+                        <p class="project-description">An innovative packaging design exploration that combines
+                            sustainability with aesthetic appeal. Developed unique packaging solutions for premium
+                            products.</p>
+                    </div>
+                    <div class="project-overlay">
+                        <a href="#" class="btn-glass-sm view-case-study">View Casestudy <i
+                                class="ph ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="project-3.png" alt="Brand story board">
+                    <div class="project-info">
+                        <div class="close-project-info">×</div>
+                        <h3 class="project-title">Product Mockup</h3>
+                        <p class="project-description">Professional product mockup showcasing cutting-edge design
+                            techniques and photorealistic rendering. Perfect blend of creativity and technical
+                            excellence.</p>
+                    </div>
+                    <div class="project-overlay">
+                        <a href="#" class="btn-glass-sm view-case-study">View Casestudy <i
+                                class="ph ph-arrow-up-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="projects-footer">
+            <a href="#contact" class="btn-outline">Book a Free Call</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <div class="about-text">
+                <div class="pill-label" style="width: fit-content;"><span class="dot"></span> About</div>
+                <h2 style="font-size: 3.9rem;">Introducing Cloudrify</h2>
+                <p style="font-size: 1.1rem;">We are Cloudrify, a passionate Web Development &amp; Digital Solutions
+                    agency based in Australia. We specialize in crafting modern websites and applications that captivate
+                    and inspire, blending creativity with technology to elevate businesses.</p>
+                <div class="slider-track">
+                    <div class="slider-line"></div>
+                    <div class="slider-dot"></div>
+                </div>
+                <div class="about-tags">
+                    <span class="tag">Full Stack Development</span>
+                    <span class="tag">Website Designing</span>
+                    <span class="tag">UI/UX Designing</span>
+                    <span class="tag">Branding</span>
+                    <span class="tag">APP devlopment</span>
+                    <span class="tag">Figma</span>
+                    <span class="tag">Affordable</span>
+                </div>
+                <div class="experience-list">
+                    <div class="exp-item">
+                        <div>
+                            <h4>Web Development</h4>
+                            <span>Full Stack Solutions</span>
+                        </div>
+                        <div class="exp-company">
+                            <span>Cloudrify Digital</span>
+                            <span>Currently</span>
+                        </div>
+                    </div>
+                    <div class="exp-item">
+                        <div>
+                            <h4>UI/UX Design</h4>
+                            <span>Creative Design Services</span>
+                        </div>
+                        <div class="exp-company">
+                            <span>Cloudrify Digital</span>
+                            <span>2024-Present</span>
+                        </div>
+                    </div>
+                    <div class="exp-item">
+                        <div>
+                            <h4>App Development</h4>
+                            <span>Mobile & Web Apps</span>
+                        </div>
+                        <div class="exp-company">
+                            <span>Cloudrify Digital</span>
+                            <span>2024-Present</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual">
+                <img src="about.png" alt="About portrait">
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="testimonial-header-container">
+            <div class="testimonial-image-placeholder">
+                <!-- Image will be placed here -->
+                <img src="testinomial-img.png" alt="testinomial image" style="object-fit:cover;">
+            </div>
+            <div class="testimonial-header">
+                <div class="pill-label" style="width:fit-content;font-size: 1rem;"><span class="dot"></span> Reviews
+                </div>
+                <h2>Client Reviews</h2>
+                <p>The feedback from clients who trusted my design expertise to elevate their brands successfully.</p>
+                <div class="testimonial-buttons">
+                    <a href="#contact" class="btn-outline">Book a Free Call</a>
+                    <a href="#services" class="btn-outline">See Services</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-grid">
+            <div class="testimonial-scroll">
+                <div class="testimonial-card">
+                    <div class="client-info">
+                        <div class="avatar-circle">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face"
+                                alt="Michael Chen">
+                        </div>
+                        <div>
+                            <h3>Michael Chen</h3>
+                            <span>Owner, Horizon Properties</span>
+                        </div>
+                    </div>
+                    <p>"Cloudrify completely transformed our online presence. The website they built for us has
+                        generated 40% more enquiries in just 3 months. Professional team, delivered on time and within
+                        budget."
+                    </p>
+                    <div class="stars">
+                        <span class="star-rating">
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                        </span>
+                        <span class="rating-number">5.0</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="client-info">
+                        <div class="avatar-circle">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=face"
+                                alt="Emma Williams">
+                        </div>
+                        <div>
+                            <h3>Emma Williams</h3>
+                            <span>Founder, Bloom Wellness</span>
+                        </div>
+                    </div>
+                    <p>"From day one, the Cloudrify team understood exactly what I needed. They created a booking
+                        system that my clients love using. My business runs so much smoother now!"</p>
+                    <div class="stars">
+                        <span class="star-rating">
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                        </span>
+                        <span class="rating-number">5.0</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="client-info">
+                        <div class="avatar-circle">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+                                alt="James Mitchell">
+                        </div>
+                        <div>
+                            <h3>James Mitchell</h3>
+                            <span>Owner, Swift Logistics</span>
+                        </div>
+                    </div>
+                    <p>"We needed a complex web application and Cloudrify delivered beyond expectations. Their
+                        technical expertise and communication throughout the project was outstanding."</p>
+                    <div class="stars">
+                        <span class="star-rating">
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                        </span>
+                        <span class="rating-number">5.0</span>
+                    </div>
+                </div>
+                <!-- Duplicate cards for seamless loop -->
+                <div class="testimonial-card">
+                    <div class="client-info">
+                        <div class="avatar-circle">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face"
+                                alt="Michael Chen">
+                        </div>
+                        <div>
+                            <h3>Michael Chen</h3>
+                            <span>Owner, Horizon Properties</span>
+                        </div>
+                    </div>
+                    <p>"Cloudrify completely transformed our online presence. The website they built for us has
+                        generated 40% more enquiries in just 3 months. Professional team, delivered on time and within
+                        budget."
+                    </p>
+                    <div class="stars">
+                        <span class="star-rating">
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                        </span>
+                        <span class="rating-number">5.0</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="client-info">
+                        <div class="avatar-circle">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=face"
+                                alt="Emma Williams">
+                        </div>
+                        <div>
+                            <h3>Emma Williams</h3>
+                            <span>Founder, Bloom Wellness</span>
+                        </div>
+                    </div>
+                    <p>"From day one, the Cloudrify team understood exactly what I needed. They created a booking
+                        system that my clients love using. My business runs so much smoother now!"</p>
+                    <div class="stars">
+                        <span class="star-rating">
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                        </span>
+                        <span class="rating-number">5.0</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="client-info">
+                        <div class="avatar-circle">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+                                alt="James Mitchell">
+                        </div>
+                        <div>
+                            <h3>James Mitchell</h3>
+                            <span>Owner, Swift Logistics</span>
+                        </div>
+                    </div>
+                    <p>"We needed a complex web application and Cloudrify delivered beyond expectations. Their
+                        technical expertise and communication throughout the project was outstanding."</p>
+                    <div class="stars">
+                        <span class="star-rating">
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                        </span>
+                        <span class="rating-number">5.0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="services-container">
+            <div class="services-text">
+                <div class="pill-label">
+                    <i class="ph ph-circle-notch"></i> Design services
+                </div>
+                <h2>Services</h2>
+                <p class="section-desc">Helping businesses stand out with custom websites and digital solutions that
+                    captivate and
+                    convert effectively.</p>
+
+                <div class="service-tags">
+                    <span class="tag">Web Development</span>
+                    <span class="tag">Website Designing</span>
+                    <span class="tag">UI/UX Design</span>
+                    <span class="tag">App Development</span>
+                    <span class="tag">E-commerce Solutions</span>
+                </div>
+
+                <div class="service-buttons">
+                    <a href="#contact" class="btn-outline">Book a Free Call</a>
+                </div>
+            </div>
+            <div class="services-image">
+                <img src="service-img.png" alt="Services">
+            </div>
+        </div>
+
+        <div class="service-cards">
+            <div class="service-card">
+                <div class="card-icon"><i class="ph ph-globe"></i> Web Development</div>
+                <p>Building responsive and modern websites that bring your business online, giving you a powerful
+                    digital presence that converts visitors into customers.</p>
+            </div>
+            <div class="service-card">
+                <div class="card-icon"><i class="ph ph-device-mobile"></i> App Development</div>
+                <p>Creating custom mobile and web applications tailored to your business needs â€” because every feature
+                    matters when delivering exceptional user experiences.</p>
+            </div>
+        </div>
+
+        <!-- Service Pills Row -->
+        <div class="service-pills-row">
+            <div class="service-pills-scroll service-pills-scroll-right">
+                <span class="pill">Frontend Development</span>
+                <span class="pill"><i class="ph ph-pencil-simple"></i> Content Writing</span>
+                <span class="pill"><i class="ph ph-monitor-play"></i> Web Graphics</span>
+                <span class="pill"><i class="ph ph-arrows-left-right"></i> Website Migration</span>
+                <span class="pill"><i class="ph ph-image"></i> Responsive Design</span>
+                <span class="pill"><i class="ph ph-aperture"></i> Branding</span>
+                <span class="pill">Frontend Development</span>
+                <span class="pill"><i class="ph ph-pencil-simple"></i> Content Writing</span>
+                <span class="pill"><i class="ph ph-monitor-play"></i> Web Graphics</span>
+                <span class="pill"><i class="ph ph-arrows-left-right"></i> Website Migration</span>
+                <span class="pill"><i class="ph ph-image"></i> Responsive Design</span>
+                <span class="pill"><i class="ph ph-aperture"></i> Branding</span>
+            </div>
+        </div>
+        <div class="service-pills-row">
+            <div class="service-pills-scroll">
+                <span class="pill"><i class="ph ph-lightning"></i> SEO Optimization</span>
+                <span class="pill"><i class="ph ph-layout"></i> Landing Pages</span>
+                <span class="pill"><i class="ph ph-megaphone"></i> Social Media</span>
+                <span class="pill"><i class="ph ph-sparkle"></i> UI Icons</span>
+                <span class="pill"><i class="ph ph-magnifying-glass"></i> Search Visibility</span>
+                <span class="pill"><i class="ph ph-plug"></i> API Integration</span>
+                <span class="pill"><i class="ph ph-lightning"></i> SEO Optimization</span>
+                <span class="pill"><i class="ph ph-layout"></i> Landing Pages</span>
+                <span class="pill"><i class="ph ph-megaphone"></i> Social Media</span>
+                <span class="pill"><i class="ph ph-sparkle"></i> UI Icons</span>
+                <span class="pill"><i class="ph ph-magnifying-glass"></i> Search Visibility</span>
+                <span class="pill"><i class="ph ph-plug"></i> API Integration</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-card">
+            <div class="stat-item">
+                <div class="stat-number">80+</div>
+                <div class="stat-label">design projects completed.</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number">96%</div>
+                <div class="stat-label">Client satisfaction rate.</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number">2+</div>
+                <div class="stat-label">Years of experience</div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="faq-container">
+            <div class="faq-text">
+                <div class="pill-label"><i class="ph ph-question"></i> FAQ'S</div>
+                <h2>Answers</h2>
+                <p>Find answers to common questions about my design process, services etc...</p>
+                <div class="faq-image">
+                    <img src="faq-img.png" alt="FAQ Image">
+                </div>
+
+                <div class="faq-tags">
+                    <span class="faq-tag">Full Stack Development</span>
+                    <span class="faq-tag">Web/App services</span>
+                    <span class="faq-tag">perfect for your business</span>
+                </div>
+
+                <div class="faq-tag-divider"></div>
+
+                <a href="#contact" class="faq-cta-btn">Book a Free Call</a>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I start working with you?</span>
+                        <i class="ph ph-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Simply book a free call with us to discuss your project requirements and goals. We'll guide
+                            you through the next steps.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What design tools do you use?</span>
+                        <i class="ph ph-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We use industry-standard tools like Figma, Adobe Creative Suite, and Framer to deliver
+                            high-quality designs.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does a project take?</span>
+                        <i class="ph ph-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Project timelines vary depending on complexity, but typically range from 2-6 weeks for
+                            standard branding and web design projects.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you provide revisions?</span>
+                        <i class="ph ph-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we include a set number of revisions in our packages to ensure the final design meets
+                            your expectations.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What industries do you work with?</span>
+                        <i class="ph ph-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We work with a diverse range of industries, including tech, fashion, lifestyle, and
+                            e-commerce brands.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can you help with rebranding projects?</span>
+                        <i class="ph ph-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We guide you through discovery, strategy, and execution to refresh your entire
+                            brand presence.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer ongoing design support?</span>
+                        <i class="ph ph-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer monthly retainers so you can request new assets, iterations, or campaign
+                            visuals as needed.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-card">
+            <div class="contact-intro">
+                <div class="pill-label"><span class="dot"></span> Contact</div>
+                <h2>Let's create something bold together.</h2>
+                <p>Share your vision, project scope, or even a rough idea. we'll get back to you within 3-5 business
+                    days with next
+                    steps.</p>
+                <div class="contact-details">
+                    <a href="mailto:xyzabc@gmail.com" class="contact-link"><i class="ph ph-envelope-simple"></i>
+                        Email</a>
+                    <div class="contact-link"><i class="ph ph-map-pin"></i> Melbourne Â· Australia</div>
+                </div>
+                <div class="contact-socials">
+                    <a href="#" class="social-pill"><i class="ph ph-behance-logo"></i> Behance</a>
+                    <a href="#" class="social-pill"><i class="ph ph-dribbble-logo"></i> Dribbble</a>
+                    <a href="#" class="social-pill"><i class="ph ph-globe"></i> Website</a>
+                </div>
+            </div>
+            <form class="contact-form" id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="from_name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="from_email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="project-type">What do you want to build?</label>
+                    <select id="project-type" name="project_type" required>
+                        <option value="">Select project type</option>
+                        <option value="E-commerce Website">E-commerce Website</option>
+                        <option value="Landing Page">Landing Page</option>
+                        <option value="Portfolio Website">Portfolio Website</option>
+                        <option value="Business Website">Business Website</option>
+                        <option value="Booking Platform">Booking Platform</option>
+                        <option value="Mobile/Web App">Mobile/Web App</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="budget">Budget Range</label>
+                    <select id="budget" name="budget">
+                        <option value="Under $5k">Under $5k</option>
+                        <option value="$5k - $10k">$5k - $10k</option>
+                        <option value="$10k - $25k">$10k - $25k</option>
+                        <option value="$25k+">$25k+</option>
+                    </select>
+                </div>
+                <div class="form-group full">
+                    <label for="message">Project Details</label>
+                    <textarea id="message" name="message" rows="4"
+                        placeholder="Tell me about the goals, timeline, and deliverables you have in mind."
+                        required></textarea>
+                </div>
+                <button type="submit" class="btn-outline send-btn" id="submit-btn">Send Brief <i
+                        class="ph ph-paper-plane-tilt"></i></button>
+            </form>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <div class="pill-label"><span class="dot"></span> Available For Work</div>
+            <h2>Curious about what we can create together? Let's bring something extraordinary to life!</h2>
+            <div class="cta-social-icons">
+                <a href="#" class="social-icon" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                <span class="icon-separator"></span>
+                <a href="#" class="social-icon" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+                <span class="icon-separator"></span>
+                <a href="#" class="social-icon" aria-label="X"><i class="ph ph-x-logo"></i></a>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <a href="mailto:Email12345@gmail.com">Email12345@gmail.com</a>
+                </div>
+                <div class="footer-center">
+                    <span>Crafted by <a href="cloudrifydigital.com.au" class="underline">Cloudrify Digital</a></span>
+                </div>
+                <div class="footer-right">
+                    <span>All rights reserved, @2025</span>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
