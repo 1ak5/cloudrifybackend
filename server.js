@@ -44,12 +44,18 @@ const Contact = mongoose.model('Contact', contactSchema);
 
 // API Routes
 app.post('/api/contact', async (req, res) => {
+    console.log('Received contact form submission:', req.body);
     try {
         const { from_name, from_email, project_type, budget, message } = req.body;
+
+        if (!from_name || !from_email || !message) {
+            return res.status(400).json({ success: false, message: 'Name, email, and message are required.' });
+        }
 
         // 1. Save to Database
         const newContact = new Contact({ from_name, from_email, project_type, budget, message });
         await newContact.save();
+        console.log('Contact saved to database successfully.');
 
         // 2. Send Email Notification
         const mailOptions = {
@@ -75,12 +81,19 @@ app.post('/api/contact', async (req, res) => {
             `
         };
 
-        await transporter.sendMail(mailOptions);
-
-        res.status(201).json({ success: true, message: 'Message saved and email sent!' });
+        try {
+            const info = await transporter.sendMail(mailOptions);
+            console.log('Email sent successfully:', info.response);
+            res.status(201).json({ success: true, message: 'Message saved and email sent!' });
+        } catch (mailError) {
+            console.error('Nodemailer Error:', mailError);
+            // Even if email fails, data is saved in DB. 
+            // We tell the user it's saved but mention the email issue in terminal.
+            res.status(201).json({ success: true, message: 'Message saved (but email failed to send)' });
+        }
     } catch (error) {
-        console.error('Error in contact route:', error);
-        res.status(500).json({ success: false, message: 'Server error' });
+        console.error('Database/Server Error:', error);
+        res.status(500).json({ success: false, message: 'Server error: ' + error.message });
     }
 });
 

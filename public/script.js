@@ -317,10 +317,6 @@
     // EMAILJS INTEGRATION
     // ============================================
 
-    // Initialize EmailJS with your Public Key
-    // IMPORTANT: Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
-    emailjs.init('Mfq5kN55ctRpCJ72p');
-
     const contactForm = document.getElementById('contact-form');
     const submitBtn = document.getElementById('submit-btn');
 
@@ -353,35 +349,31 @@
                 },
                 body: JSON.stringify(formData),
             })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        console.log('Backend Success:', data.message);
-
-                        // Also keep EmailJS as requested/backup if configured
-                        emailjs.send('service_qpm3fhe', 'template_ls5eyos', formData)
-                            .then(() => console.log('EmailJS Success'))
-                            .catch(err => console.log('EmailJS Error:', err));
-
-                        // Show success message
-                        submitBtn.innerHTML = 'Sent Successfully! <i class="ph ph-check-circle"></i>';
-                        submitBtn.style.background = 'rgba(34, 197, 94, 0.2)';
-                        submitBtn.style.borderColor = 'rgba(34, 197, 94, 0.5)';
-
-                        // Reset form
-                        contactForm.reset();
-
-                        // Reset button after 3 seconds
-                        setTimeout(() => {
-                            submitBtn.innerHTML = originalBtnText;
-                            submitBtn.disabled = false;
-                            submitBtn.style.opacity = '1';
-                            submitBtn.style.background = '';
-                            submitBtn.style.borderColor = '';
-                        }, 3000);
-                    } else {
-                        throw new Error(data.message || 'Server error');
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(err => { throw new Error(err.message || 'Server error'); });
                     }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Backend Success:', data.message);
+
+                    // Show success message
+                    submitBtn.innerHTML = 'Sent Successfully! <i class="ph ph-check-circle"></i>';
+                    submitBtn.style.background = 'rgba(34, 197, 94, 0.2)';
+                    submitBtn.style.borderColor = 'rgba(34, 197, 94, 0.5)';
+
+                    // Reset form
+                    contactForm.reset();
+
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalBtnText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.opacity = '1';
+                        submitBtn.style.background = '';
+                        submitBtn.style.borderColor = '';
+                    }, 3000);
                 })
                 .catch(error => {
                     console.log('Submission Error:', error);
