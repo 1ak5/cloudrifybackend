@@ -35,9 +35,10 @@ const transporter = nodemailer.createTransport({
 const contactSchema = new mongoose.Schema({
     from_name: { type: String, required: true },
     from_email: { type: String, required: true },
-    project_type: { type: String, required: true },
+    project_type: { type: String },
     budget: { type: String },
     message: { type: String, required: true },
+    metadata: { type: Object }, // To store extra fields like form_type and subject
     createdAt: { type: Date, default: Date.now }
 });
 const Contact = mongoose.model('Contact', contactSchema);
@@ -46,50 +47,60 @@ const Contact = mongoose.model('Contact', contactSchema);
 app.post('/api/contact', async (req, res) => {
     console.log('Received contact form submission:', req.body);
     try {
-        const { from_name, from_email, project_type, budget, message } = req.body;
+        const { form_type, from_name, from_email, project_type, subject, message } = req.body;
 
         if (!from_name || !from_email || !message) {
             return res.status(400).json({ success: false, message: 'Name, email, and message are required.' });
         }
 
         // 1. Save to Database
-        const newContact = new Contact({ from_name, from_email, project_type, budget, message });
+        // We'll store both in the same collection, but include the type
+        const contactData = {
+            from_name,
+            from_email,
+            project_type: project_type || 'Support Request',
+            budget: 'N/A', // Removed from UI
+            message,
+            metadata: { form_type: form_type || 'enquiry', subject: subject || 'No Subject' }
+        };
+        const newContact = new Contact(contactData);
         await newContact.save();
         console.log('Contact saved to database successfully.');
 
-        // 2. Send Email Notification
+        // 2. Determine Recipient (Connected to .env EMAIL_1 and EMAIL_2)
+        const isSupport = form_type === 'support';
+        const recipient = isSupport ? process.env.EMAIL_2 : process.env.EMAIL_1;
+        const mailSubject = isSupport ? `Support Request: ${subject || 'Help Needed'}` : `New Enquiry: ${project_type}`;
+
+        // 3. Send Email Notification
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: process.env.RECEIVER_EMAIL,
-            subject: `New Contact Form Submission from ${from_name}`,
+            to: recipient,
+            subject: mailSubject,
             text: `
-                You have a new submission from your website:
+                You have a new ${isSupport ? 'Support Request' : 'Client Enquiry'}:
                 
                 Name: ${from_name}
                 Email: ${from_email}
-                Project Type: ${project_type}
-                Budget: ${budget}
+                ${isSupport ? `Subject: ${subject}` : `Project Type: ${project_type}`}
                 Message: ${message}
             `,
             html: `
-                <h3>New Contact Form Submission</h3>
+                <h3>New ${isSupport ? 'Support Request' : 'Client Enquiry'}</h3>
                 <p><strong>Name:</strong> ${from_name}</p>
                 <p><strong>Email:</strong> ${from_email}</p>
-                <p><strong>Project Type:</strong> ${project_type}</p>
-                <p><strong>Budget:</strong> ${budget}</p>
-                <p><strong>Message:</strong> ${message}</p>
+                <p><strong>${isSupport ? 'Subject' : 'Project Type'}:</strong> ${isSupport ? subject : project_type}</p>
+                <p><strong>Message:</strong></p>
+                <p>${message}</p>
             `
         };
 
         try {
-            const info = await transporter.sendMail(mailOptions);
-            console.log('Email sent successfully:', info.response);
-            res.status(201).json({ success: true, message: 'Message saved and email sent!' });
+            await transporter.sendMail(mailOptions);
+            res.status(201).json({ success: true, message: 'Sent Successfully!' });
         } catch (mailError) {
             console.error('Nodemailer Error:', mailError);
-            // Even if email fails, data is saved in DB. 
-            // We tell the user it's saved but mention the email issue in terminal.
-            res.status(201).json({ success: true, message: 'Message saved (but email failed to send)' });
+            res.status(201).json({ success: true, message: 'Saved (Email Error)' });
         }
     } catch (error) {
         console.error('Database/Server Error:', error);

@@ -1,4 +1,70 @@
 ﻿document.addEventListener('DOMContentLoaded', () => {
+    // ============================================
+    // THEME TOGGLE LOGIC
+    // ============================================
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+    const html = document.documentElement;
+
+    // Always default to light mode on refresh
+    html.setAttribute('data-theme', 'light');
+    localStorage.removeItem('theme'); // Clear any saved preference to ensure light mode next time too
+
+    // Toggle theme function
+    const toggleTheme = () => {
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    };
+
+    // Desktop theme toggle
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+
+    // Mobile theme toggle
+    if (themeToggleMobile) {
+        themeToggleMobile.addEventListener('click', toggleTheme);
+    }
+
+    // ============================================
+    // MOBILE MENU LOGIC
+    // ============================================
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
+
+    // Open mobile menu
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    // Close mobile menu
+    const closeMobileMenu = () => {
+        if (mobileMenu) {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+
+    if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+    }
+
+    // Close menu when clicking a link
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+
+    // ============================================
+    // PRELOADER LOGIC
+    // ============================================
     // Premium Preloader Logic
     const preloader = document.querySelector('.preloader');
     const progressBar = document.querySelector('.loader-progress-bar');
@@ -232,6 +298,23 @@
 
         card.addEventListener('mouseenter', onMouseEnter);
         card.addEventListener('mouseleave', onMouseLeave);
+
+        // Mobile click handler
+        card.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                // If clicking the link icon, let it happen
+                if (e.target.closest('.project-link-btn')) return;
+
+                const isActive = card.classList.contains('active');
+
+                // Close others
+                document.querySelectorAll('.project-card.active').forEach(c => {
+                    if (c !== card) c.classList.remove('active');
+                });
+
+                card.classList.toggle('active');
+            }
+        });
     });
 
     // Text reveal animation on scroll
@@ -253,10 +336,10 @@
     if (navbar) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(5, 5, 5, 0.95)';
+                navbar.style.background = 'var(--navbar-bg-scrolled)';
                 navbar.style.backdropFilter = 'blur(20px)';
             } else {
-                navbar.style.background = 'rgba(5, 5, 5, 0.8)';
+                navbar.style.background = 'var(--navbar-bg)';
                 navbar.style.backdropFilter = 'blur(10px)';
             }
         });
@@ -317,82 +400,226 @@
     // EMAILJS INTEGRATION
     // ============================================
 
+    // ============================================
+    // DUAL-TAB CONTACT FORM LOGIC
+    // ============================================
+    const contactTabs = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+    const formTypeInput = document.getElementById('form-type');
     const contactForm = document.getElementById('contact-form');
     const submitBtn = document.getElementById('submit-btn');
+    const formWarning = document.getElementById('form-warning');
+
+    // Tab Switching Logic
+    contactTabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetTab = tab.getAttribute('data-tab');
+
+            // Update active states
+            contactTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                if (content.id === `${targetTab}-tab`) {
+                    content.classList.add('active');
+                }
+            });
+
+            // Update hidden input
+            formTypeInput.value = targetTab;
+
+            // Hide warning when switching
+            formWarning.classList.remove('active');
+        });
+    });
+
+    // ============================================
+    // CUSTOM DROPDOWN LOGIC
+    // ============================================
+    const customSelect = document.querySelector('.custom-select');
+    if (customSelect) {
+        const trigger = customSelect.querySelector('.custom-select-trigger');
+        const options = customSelect.querySelectorAll('.custom-option');
+        const hiddenInput = document.getElementById('project-type');
+        const triggerText = trigger.querySelector('span');
+
+        trigger.addEventListener('click', () => {
+            customSelect.classList.toggle('open');
+        });
+
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                const value = option.getAttribute('data-value');
+                const text = option.textContent;
+
+                // Update UI
+                triggerText.textContent = text;
+                options.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                customSelect.classList.remove('open');
+
+                // Update Hidden Input
+                if (hiddenInput) {
+                    hiddenInput.value = value;
+                }
+            });
+        });
+
+        // Close on click outside
+        window.addEventListener('click', (e) => {
+            if (!customSelect.contains(e.target)) {
+                customSelect.classList.remove('open');
+            }
+        });
+    }
 
     if (contactForm) {
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // Get original button text
-            const originalBtnText = submitBtn.innerHTML;
+            // 1. Validation: Ensure only active tab is filled
+            const activeTabId = formTypeInput.value;
+            const enquiryFields = ['name', 'email', 'project-type', 'message'];
+            const supportFields = ['support-name', 'support-email', 'support-subject', 'support-message'];
+
+            const hasEnquiryData = enquiryFields.some(id => {
+                const el = document.getElementById(id);
+                return el && el.value.trim() !== '';
+            });
+            const hasSupportData = supportFields.some(id => {
+                const el = document.getElementById(id);
+                return el && el.value.trim() !== '';
+            });
+
+            // Rule: User must fill active tab and NOT the other one if content exists
+            if (hasEnquiryData && hasSupportData) {
+                formWarning.classList.add('active');
+                return;
+            }
+
+            formWarning.classList.remove('active');
+
+            // 2. Prepare Data based on active tab
+            let formData = {};
+            if (activeTabId === 'enquiry') {
+                formData = {
+                    form_type: 'enquiry',
+                    from_name: document.getElementById('name').value,
+                    from_email: document.getElementById('email').value,
+                    project_type: document.getElementById('project-type').value,
+                    message: document.getElementById('message').value,
+                };
+                if (!formData.from_name || !formData.from_email || !formData.message) {
+                    alert('Please fill all enquiry fields.');
+                    return;
+                }
+            } else {
+                formData = {
+                    form_type: 'support',
+                    from_name: document.getElementById('support-name').value,
+                    from_email: document.getElementById('support-email').value,
+                    subject: document.getElementById('support-subject').value,
+                    message: document.getElementById('support-message').value,
+                };
+                if (!formData.from_name || !formData.from_email || !formData.message) {
+                    alert('Please fill all support fields.');
+                    return;
+                }
+            }
 
             // Show loading state
+            const originalBtnText = submitBtn.innerHTML;
             submitBtn.innerHTML = 'Sending... <i class="ph ph-spinner"></i>';
             submitBtn.disabled = true;
-            submitBtn.style.opacity = '0.7';
-
-            // Prepare form data
-            const formData = {
-                from_name: document.getElementById('name').value,
-                from_email: document.getElementById('email').value,
-                project_type: document.getElementById('project-type').value,
-                budget: document.getElementById('budget').value,
-                message: document.getElementById('message').value,
-            };
 
             // Send to Backend API
             fetch('/api/contact', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             })
-                .then(response => {
-                    if (!response.ok) {
-                        return response.json().then(err => { throw new Error(err.message || 'Server error'); });
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Backend Success:', data.message);
+                .then(response => response.json().then(data => ({ ok: response.ok, data })))
+                .then(({ ok, data }) => {
+                    if (!ok) throw new Error(data.message || 'Server error');
 
-                    // Show success message
+                    // Success state
                     submitBtn.innerHTML = 'Sent Successfully! <i class="ph ph-check-circle"></i>';
                     submitBtn.style.background = 'rgba(34, 197, 94, 0.2)';
-                    submitBtn.style.borderColor = 'rgba(34, 197, 94, 0.5)';
 
-                    // Reset form
                     contactForm.reset();
+                    // Reset custom dropdown UI
+                    if (triggerText) triggerText.textContent = 'Select project type';
+                    if (hiddenInput) hiddenInput.value = '';
+                    options.forEach(opt => opt.classList.remove('selected'));
+                    if (options[0]) options[0].classList.add('selected');
 
-                    // Reset button after 3 seconds
                     setTimeout(() => {
                         submitBtn.innerHTML = originalBtnText;
                         submitBtn.disabled = false;
-                        submitBtn.style.opacity = '1';
                         submitBtn.style.background = '';
-                        submitBtn.style.borderColor = '';
                     }, 3000);
                 })
                 .catch(error => {
-                    console.log('Submission Error:', error);
-
-                    // Show error message
+                    console.error('Submission Error:', error);
                     submitBtn.innerHTML = 'Failed! Try Again <i class="ph ph-x-circle"></i>';
                     submitBtn.style.background = 'rgba(239, 68, 68, 0.2)';
-                    submitBtn.style.borderColor = 'rgba(239, 68, 68, 0.5)';
-
-                    // Reset button after 3 seconds
                     setTimeout(() => {
                         submitBtn.innerHTML = originalBtnText;
                         submitBtn.disabled = false;
-                        submitBtn.style.opacity = '1';
                         submitBtn.style.background = '';
-                        submitBtn.style.borderColor = '';
                     }, 3000);
                 });
         });
+    }
+    // ============================================
+    // SHOW MORE PROJECTS LOGIC
+    // ============================================
+    const showMoreBtn = document.getElementById('show-more-btn');
+    const hiddenProjects = document.querySelectorAll('.hidden-project');
+    const projectsFooter = document.querySelector('.projects-footer');
+
+    console.log('Show More Init:', {
+        btn: !!showMoreBtn,
+        hiddenCount: hiddenProjects.length,
+        footer: !!projectsFooter
+    });
+
+    if (showMoreBtn) {
+        showMoreBtn.addEventListener('click', () => {
+            console.log('Show More Clicked');
+            const isHidden = !showMoreBtn.classList.contains('active');
+
+            if (isHidden) {
+                hiddenProjects.forEach((project, index) => {
+                    setTimeout(() => {
+                        project.classList.add('show');
+                    }, index * 100);
+                });
+                showMoreBtn.innerHTML = 'Show Less <i class="fas fa-chevron-up"></i>';
+                showMoreBtn.classList.add('active');
+                if (projectsFooter) projectsFooter.style.display = 'flex';
+            } else {
+                hiddenProjects.forEach(project => {
+                    project.classList.remove('show');
+                });
+                showMoreBtn.innerHTML = 'Show More <i class="fas fa-chevron-down"></i>';
+                showMoreBtn.classList.remove('active');
+
+                const projectsSection = document.getElementById('projects');
+                if (projectsSection) {
+                    projectsSection.scrollIntoView({ behavior: 'smooth' });
+                }
+                if (projectsFooter) projectsFooter.style.display = 'none';
+            }
+        });
+    }
+
+    // Force hide initially via JS as a fallback
+    hiddenProjects.forEach(p => p.classList.remove('show'));
+    if (projectsFooter && hiddenProjects.length > 0) {
+        projectsFooter.style.display = 'none';
     }
 });
 

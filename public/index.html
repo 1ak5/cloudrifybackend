@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -10,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <!-- EmailJS SDK -->
@@ -42,15 +44,59 @@
             <a href="#testimonials">Testimonials</a>
             <a href="#contact">Contact</a>
         </div>
-        <div class="nav-cta">
-            <a href="#contact" class="btn-glass"><i class="ph ph-paper-plane-tilt"></i> Get in Touch</a>
+        <div class="navbar-right">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <i class="ph ph-sun" id="theme-icon-sun"></i>
+                <i class="ph ph-moon" id="theme-icon-moon"></i>
+            </button>
+            <div class="nav-cta">
+                <a href="#contact" class="btn-glass"><i class="ph ph-paper-plane-tilt"></i> Get in Touch</a>
+            </div>
         </div>
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu">
+            <i class="ph ph-list"></i>
+        </button>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <i class="ph-fill ph-squares-four"></i>CLOUDRIFY
+            </div>
+            <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">
+                <i class="ph ph-x"></i>
+            </button>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="mobile-menu-footer">
+            <div class="mobile-theme-toggle">
+                <span>Theme</span>
+                <button class="theme-toggle-mobile" id="theme-toggle-mobile" aria-label="Toggle theme">
+                    <i class="ph ph-sun" id="theme-icon-sun-mobile"></i>
+                    <i class="ph ph-moon" id="theme-icon-moon-mobile"></i>
+                </button>
+            </div>
+            <a href="#contact" class="btn-outline mobile-cta">Get in Touch</a>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-bg">
-            <img src="hero-bg.png" alt="Abstract Background">
+            <img src="hero-bg.png" alt="Dark Background" class="hero-img-dark">
+            <img src="herolight4.jpeg" alt="Light Background" class="hero-img-light">
+        </div>
+        <div class="hero-decor">
+            <div class="decor-blob blob-1"></div>
+            <div class="decor-blob blob-2"></div>
+            <div class="decor-blob blob-3"></div>
         </div>
         <div class="hero-content">
             <div class="pill-label">
@@ -130,126 +176,173 @@
         <div class="project-grid">
             <div class="project-column column-left">
                 <div class="project-card">
-                    <img src="project-1.png" alt="Branding device project">
-                    <div class="project-info">
-                        <div class="close-project-info">×</div>
-                        <h3 class="project-title">Branding Device</h3>
-                        <p class="project-description">A comprehensive branding project featuring modern design
-                            principles and innovative device mockups. Created a cohesive brand identity across multiple
-                            platforms.</p>
-                    </div>
-                    <div class="project-overlay">
-                        <a href="#" class="btn-glass-sm view-case-study">View Casestudy <i
-                                class="ph ph-arrow-up-right"></i></a>
+                    <a href="#" target="_blank">
+                        <img src="heartcoffee.png" alt="Branding device project">
+                    </a>
+                    <div class="project-details">
+                        <div class="project-title-row">
+                            <h3 class="project-title">Haert Coffee</h3>
+                            <a href="https://heartcoffee.vercel.app" target="_blank" class="project-link-btn"><i
+                                    class="fas fa-link"></i></a>
+                        </div>
+                        <p class="project-description">A Premium cafe website with stunning designs, professionally
+                            worked.
+                        </p>
+                        <div class="project-tags">
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">javascript</span>
+                            <span class="project-tag">#Frontend</span>
+
+
+
+                        </div>
                     </div>
                 </div>
-                <div class="project-card tall">
-                    <img src="project-2.png" alt="Packaging exploration">
-                    <div class="project-info">
-                        <div class="close-project-info"></div>
-                        <h3 class="project-title">Packaging Exploration</h3>
+                <div class="project-card hidden-project">
+                    <a href="#" target="_blank">
+                        <img src="project-3.png" alt="Packaging exploration">
+                    </a>
+                    <div class="project-details">
+                        <div class="project-title-row">
+                            <h3 class="project-title">Packaging Exploration</h3>
+                            <a href="#" target="_blank" class="project-link-btn"><i class="fas fa-link"></i></a>
+                        </div>
                         <p class="project-description">An innovative packaging design exploration that combines
-                            sustainability with aesthetic appeal. Developed unique packaging solutions for premium
-                            products.</p>
-                    </div>
-                    <div class="project-overlay">
-                        <a href="#" class="btn-glass-sm view-case-study">View Casestudy <i
-                                class="ph ph-arrow-up-right"></i></a>
+                            sustainability with aesthetic appeal.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Packaging</span>
+                            <span class="project-tag">Sustainable</span>
+                            <span class="project-tag">3D</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <img src="project-3.png" alt="Product mockup board">
-                    <div class="project-info">
-                        <div class="close-project-info">×</div>
-                        <h3 class="project-title">Product Mockup</h3>
+                <div class="project-card hidden-project">
+                    <a href="#" target="_blank">
+                        <img src="project-3.png" alt="Product mockup board">
+                    </a>
+                    <div class="project-details">
+                        <div class="project-title-row">
+                            <h3 class="project-title">Product Mockup</h3>
+                            <a href="#" target="_blank" class="project-link-btn"><i class="fas fa-link"></i></a>
+                        </div>
                         <p class="project-description">Professional product mockup showcasing cutting-edge design
-                            techniques and photorealistic rendering. Perfect blend of creativity and technical
-                            excellence.</p>
-                    </div>
-                    <div class="project-overlay">
-                        <a href="#" class="btn-glass-sm view-case-study">View Casestudy <i
-                                class="ph ph-arrow-up-right"></i></a>
+                            techniques and photorealistic rendering.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Mockup</span>
+                            <span class="project-tag">Product</span>
+                            <span class="project-tag">Render</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="project-column column-center">
-                <div class="project-card hero-card">
-                    <img src="project-3.png" alt="Profile highlight">
-                    <a href="#about" class="center-pill" style="text-decoration: none; cursor: pointer;">About Us</a>
+                <div class="project-card about-card">
+                    <img src="cloudrify.png" alt="Profile highlight">
+                    <a href="#about" class="about-tag" style="text-decoration: none; cursor: pointer;">About Us</a>
                 </div>
-                <div class="project-card tall">
-                    <img src="project-4.png" alt="Minimal product concept">
-                    <div class="project-info">
-                        <div class="close-project-info">x</div>
-                        <h3 class="project-title">Minimal Concept</h3>
+                <div class="project-card hidden-project">
+                    <a href="#" target="_blank">
+                        <img src="project-3.png" alt="Minimal product concept">
+                    </a>
+                    <div class="project-details">
+                        <div class="project-title-row">
+                            <h3 class="project-title">Minimal Concept</h3>
+                            <a href="#" target="_blank" class="project-link-btn"><i class="fas fa-link"></i></a>
+                        </div>
                         <p class="project-description">Minimalist design approach focused on simplicity and
-                            functionality. Clean aesthetics meet user-centric design principles.</p>
-                    </div>
-                    <div class="project-overlay">
-                        <a href="#" class="btn-glass-sm view-case-study">View Casestudy <i
-                                class="ph ph-arrow-up-right"></i></a>
+                            functionality.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Minimal</span>
+                            <span class="project-tag">Concept</span>
+                            <span class="project-tag">Design</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <img src="project-1.png" alt="Creative prototype">
-                    <div class="project-info">
-                        <div class="close-project-info">×</div>
-                        <h3 class="project-title">Branding Device</h3>
-                        <p class="project-description">A comprehensive branding project featuring modern design
-                            principles and innovative device mockups. Created a cohesive brand identity across multiple
-                            platforms.</p>
-                    </div>
-                    <div class="project-overlay">
-                        <a href="#" class="btn-glass-sm view-case-study">View Casestudy <i
-                                class="ph ph-arrow-up-right"></i></a>
+                <div class="project-card hidden-project">
+                    <a href="#" target="_blank">
+                        <img src="project-3.png" alt="Creative prototype">
+                    </a>
+                    <div class="project-details">
+                        <div class="project-title-row">
+                            <h3 class="project-title">Creative Prototype</h3>
+                            <a href="#" target="_blank" class="project-link-btn"><i class="fas fa-link"></i></a>
+                        </div>
+                        <p class="project-description">A creative prototype exploring new interaction models and visual
+                            styles.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Prototype</span>
+                            <span class="project-tag">Creative</span>
+                            <span class="project-tag">Interaction</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="project-column column-right">
                 <div class="project-card">
-                    <img src="project-4.png" alt="Beauty packaging">
-                    <div class="project-info">
-                        <div class="close-project-info"></div>
-                        <h3 class="project-title">Beauty Packaging</h3>
-                        <p class="project-description">Elegant packaging design for premium beauty products. Luxury
-                            aesthetics combined with functional excellence.</p>
-                    </div>
-                    <div class="project-overlay">
-                        <a href="#" class="btn-glass-sm view-case-study">View Casestudy <i
-                                class="ph ph-arrow-up-right"></i></a>
+                    <a href="#" target="_blank">
+                        <img src="laikondeli.png" alt="Beauty packaging">
+                    </a>
+                    <div class="project-details">
+                        <div class="project-title-row">
+                            <h3 class="project-title">Laikon-Deli</h3>
+                            <a href="https://laikondeli.vercel.app/" target="_blank" class="project-link-btn"><i
+                                    class="fas fa-link"></i></a>
+                        </div>
+                        <p class="project-description">Elegant website designed for the popular greek cafe, complete 8+
+                            pager site for their business.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Packaging</span>
+                            <span class="project-tag">Luxury</span>
+                            <span class="project-tag">Design</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-card tall">
-                    <img src="project-2.png" alt="Product detail shot">
-                    <div class="project-info">
-                        <div class="close-project-info"></div>
-                        <h3 class="project-title">Packaging Exploration</h3>
+                <div class="project-card hidden-project">
+                    <a href="#" target="_blank">
+                        <img src="project-3.png" alt="Product detail shot">
+                    </a>
+                    <div class="project-details">
+                        <div class="project-title-row">
+                            <h3 class="project-title">Packaging Exploration</h3>
+                            <a href="#" target="_blank" class="project-link-btn"><i class="fas fa-link"></i></a>
+                        </div>
                         <p class="project-description">An innovative packaging design exploration that combines
-                            sustainability with aesthetic appeal. Developed unique packaging solutions for premium
-                            products.</p>
-                    </div>
-                    <div class="project-overlay">
-                        <a href="#" class="btn-glass-sm view-case-study">View Casestudy <i
-                                class="ph ph-arrow-up-right"></i></a>
+                            sustainability with aesthetic appeal.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Packaging</span>
+                            <span class="project-tag">Sustainable</span>
+                            <span class="project-tag">3D</span>
+                        </div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <img src="project-3.png" alt="Brand story board">
-                    <div class="project-info">
-                        <div class="close-project-info">×</div>
-                        <h3 class="project-title">Product Mockup</h3>
+                <div class="project-card hidden-project">
+                    <a href="#" target="_blank">
+                        <img src="project-3.png" alt="Brand story board">
+                    </a>
+                    <div class="project-details">
+                        <div class="project-title-row">
+                            <h3 class="project-title">Product Mockup</h3>
+                            <a href="#" target="_blank" class="project-link-btn"><i class="fas fa-link"></i></a>
+                        </div>
                         <p class="project-description">Professional product mockup showcasing cutting-edge design
-                            techniques and photorealistic rendering. Perfect blend of creativity and technical
-                            excellence.</p>
-                    </div>
-                    <div class="project-overlay">
-                        <a href="#" class="btn-glass-sm view-case-study">View Casestudy <i
-                                class="ph ph-arrow-up-right"></i></a>
+                            techniques.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Mockup</span>
+                            <span class="project-tag">Product</span>
+                            <span class="project-tag">Render</span>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="show-more-container">
+            <button id="show-more-btn" class="btn-outline">
+                Show More <i class="fas fa-chevron-down"></i>
+            </button>
         </div>
 
         <div class="projects-footer">
@@ -535,7 +628,7 @@
             </div>
             <div class="service-card">
                 <div class="card-icon"><i class="ph ph-device-mobile"></i> App Development</div>
-                <p>Creating custom mobile and web applications tailored to your business needs â€” because every feature
+                <p>Creating custom mobile and web applications tailored to your business needs — because every feature
                     matters when delivering exceptional user experiences.</p>
             </div>
         </div>
@@ -706,8 +799,9 @@
                     days with next
                     steps.</p>
                 <div class="contact-details">
-                    <a href="mailto:xyzabc@gmail.com" class="contact-link"><i class="ph ph-envelope-simple"></i>
-                        Email</a>
+                    <a href="mailto:info@cloudrifydigital.com" class="contact-link"><i
+                            class="ph ph-envelope-simple"></i>
+                        info@cloudrifydigital.com</a>
                     <div class="contact-link"><i class="ph ph-map-pin"></i>Southbank Melbourne Australia</div>
                 </div>
                 <div class="contact-socials">
@@ -716,45 +810,93 @@
                     <a href="#" class="social-pill"><i class="ph ph-globe"></i> Website</a>
                 </div>
             </div>
-            <form class="contact-form" id="contact-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="from_name" placeholder="John Doe" required>
+            <div class="form-container">
+                <div class="contact-tabs">
+                    <button class="tab-btn active" data-tab="enquiry">Enquiry</button>
+                    <button class="tab-btn" data-tab="support">Support</button>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="from_email" placeholder="you@example.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="project-type">What do you want to build?</label>
-                    <select id="project-type" name="project_type" required>
-                        <option value="">Select project type</option>
-                        <option value="E-commerce Website">E-commerce Website</option>
-                        <option value="Landing Page">Landing Page</option>
-                        <option value="Portfolio Website">Portfolio Website</option>
-                        <option value="Business Website">Business Website</option>
-                        <option value="Booking Platform">Booking Platform</option>
-                        <option value="Mobile/Web App">Mobile/Web App</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="budget">Budget Range</label>
-                    <select id="budget" name="budget">
-                        <option value="Under $5k">Under $5k</option>
-                        <option value="$5k - $10k">$5k - $10k</option>
-                        <option value="$10k - $25k">$10k - $25k</option>
-                        <option value="$25k+">$25k+</option>
-                    </select>
-                </div>
-                <div class="form-group full">
-                    <label for="message">Project Details</label>
-                    <textarea id="message" name="message" rows="4"
-                        placeholder="Tell me about the goals, timeline, and deliverables you have in mind."
-                        required></textarea>
-                </div>
-                <button type="submit" class="btn-outline send-btn" id="submit-btn">Send Brief <i
-                        class="ph ph-paper-plane-tilt"></i></button>
-            </form>
+
+                <form class="contact-form" id="contact-form">
+                    <input type="hidden" name="form_type" id="form-type" value="enquiry">
+
+                    <!-- Enquiry Tab Content -->
+                    <div class="tab-content active" id="enquiry-tab">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="from_name" placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="from_email" placeholder="you@example.com">
+                            </div>
+                            <div class="form-group full">
+                                <label for="project-type">What do you want to build?</label>
+                                <div class="custom-select-wrapper">
+                                    <div class="custom-select" id="project-type-custom">
+                                        <div class="custom-select-trigger">
+                                            <span>Select project type</span>
+                                            <i class="ph ph-caret-down"></i>
+                                        </div>
+                                        <div class="custom-options">
+                                            <div class="custom-option selected" data-value="">Select project type</div>
+                                            <div class="custom-option" data-value="E-commerce Website">E-commerce
+                                                Website</div>
+                                            <div class="custom-option" data-value="Landing Page">Landing Page</div>
+                                            <div class="custom-option" data-value="Portfolio Website">Portfolio Website
+                                            </div>
+                                            <div class="custom-option" data-value="Business Website">Business Website
+                                            </div>
+                                            <div class="custom-option" data-value="Booking Platform">Booking Platform
+                                            </div>
+                                            <div class="custom-option" data-value="Mobile/Web App">Mobile/Web App</div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="project_type" id="project-type" value="">
+                                </div>
+                            </div>
+                            <div class="form-group full">
+                                <label for="message">Project Details</label>
+                                <textarea id="message" name="message" rows="4"
+                                    placeholder="Tell me about the goals, timeline, and deliverables you have in mind."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Support Tab Content -->
+                    <div class="tab-content" id="support-tab">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="support-name">Name</label>
+                                <input type="text" id="support-name" name="support_name" placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="support-email">Email</label>
+                                <input type="email" id="support-email" name="support_email"
+                                    placeholder="you@example.com">
+                            </div>
+                            <div class="form-group full">
+                                <label for="support-subject">Problem Subject</label>
+                                <input type="text" id="support-subject" name="support_subject"
+                                    placeholder="Technical Issue / Help Request">
+                            </div>
+                            <div class="form-group full">
+                                <label for="support-message">Problem Description</label>
+                                <textarea id="support-message" name="support_message" rows="4"
+                                    placeholder="Please describe the issue or help you need in detail."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Common Submit Button -->
+                    <button type="submit" class="btn-outline send-btn" id="submit-btn" style="border-radius: 10px;">Send
+                        Brief <i class="ph ph-paper-plane-tilt"></i></button>
+
+                    <div id="form-warning" class="form-warning">
+                        Please complete only one section at a time.
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -775,13 +917,13 @@
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-left">
-                    <a href="mailto:Email12345@gmail.com">Email12345@gmail.com</a>
+                    <a href="mailto:Email12345@gmail.com">info@cloudrifydigital.com</a>
                 </div>
                 <div class="footer-center">
-                    <span>Crafted by <a href="cloudrifydigital.com.au" class="underline">Cloudrify Digital</a></span>
+                    <span>Crafted by <a href="cloudrifydigital.com" class="underline">Cloudrify Digital</a></span>
                 </div>
                 <div class="footer-right">
-                    <span>All rights reserved, @2025</span>
+                    <span>All rights reserved, @2026</span>
                 </div>
             </div>
         </footer>
