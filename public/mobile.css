@@ -355,12 +355,29 @@ section {
         width: 100%;
     }
 
-    /* Prevent the link button from stretching */
+    /* Prevent the link button from stretching and ensure visibility */
     .project-link-btn {
         width: 44px !important;
         height: 44px !important;
         border-radius: 50% !important;
         flex-shrink: 0;
+        background: rgba(255, 255, 255, 0.2) !important;
+        border: 1.5px solid rgba(255, 255, 255, 0.6) !important;
+        color: #ffffff !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    [data-theme="light"] .project-link-btn {
+        color: #ffffff !important;
+        background: rgba(255, 255, 255, 0.2) !important;
+        border-color: rgba(255, 255, 255, 0.6) !important;
+    }
+
+    .project-link-btn i {
+        color: #ffffff !important;
+        font-size: 1.1rem !important;
     }
 
     .about-tag {
@@ -372,20 +389,17 @@ section {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        /* Center to fit better */
         align-items: center;
         text-align: center;
         padding: 20px 15px;
-        /* Compact padding */
         opacity: 0;
         pointer-events: none;
-        background: rgba(0, 0, 0, 0.9);
+        background: rgba(0, 0, 0, 0.92) !important;
+        /* Force high-contrast dark background */
         backdrop-filter: blur(15px);
         transition: opacity 0.4s ease;
-        /* Removed scale, kept smooth opacity */
         z-index: 5;
         overflow: hidden;
-        /* Disable scroll */
         width: 100%;
         position: absolute;
         top: 0;
@@ -410,21 +424,23 @@ section {
 
     .project-title {
         font-size: 1.3rem !important;
-        /* Smaller title */
         margin: 0 !important;
         color: #ffffff !important;
         white-space: nowrap !important;
+        text-shadow: none !important;
+    }
+
+    [data-theme="light"] .project-title {
+        color: #ffffff !important;
     }
 
     .project-description {
         display: -webkit-box !important;
         font-size: 0.85rem !important;
-        /* Smaller description */
         line-height: 1.5 !important;
         color: rgba(255, 255, 255, 0.95) !important;
         margin-bottom: 15px !important;
         -webkit-line-clamp: 4 !important;
-        /* Clamp to keep it compact */
         line-clamp: 4 !important;
         -webkit-box-orient: vertical !important;
         width: 100% !important;
@@ -432,15 +448,23 @@ section {
         text-shadow: none !important;
     }
 
+    [data-theme="light"] .project-description {
+        color: rgba(255, 255, 255, 0.95) !important;
+    }
+
     .project-tags {
         gap: 6px;
         justify-content: center;
         margin-top: 0;
+        display: flex !important;
     }
 
     .project-tag {
-        font-size: 0.65rem;
-        padding: 3px 10px;
+        font-size: 0.65rem !important;
+        padding: 3px 10px !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
     }
 
     /* Legacy Project Info Overlay - Removed */
