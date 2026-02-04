@@ -396,9 +396,7 @@
         }
     });
 
-    // ============================================
-    // EMAILJS INTEGRATION
-    // ============================================
+
 
     // ============================================
     // DUAL-TAB CONTACT FORM LOGIC
@@ -534,13 +532,33 @@
             submitBtn.innerHTML = 'Sending... <i class="ph ph-spinner"></i>';
             submitBtn.disabled = true;
 
+
+            // Determine API URL dynamically
+            // If running on localhost but not port 5000 (e.g. Live Server on 5500), point to backend on 5000
+            const isLocalDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            const backendPort = '5000';
+            // If we are on the backend port, use relative path. If on a different port (Live Server), use absolute path.
+            const apiUrl = (isLocalDev && window.location.port !== backendPort)
+                ? `http://localhost:${backendPort}/api/contact`
+                : '/api/contact';
+
             // Send to Backend API
-            fetch('/api/contact', {
+            fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             })
-                .then(response => response.json().then(data => ({ ok: response.ok, data })))
+
+                .then(async response => {
+                    const contentType = response.headers.get("content-type");
+                    if (contentType && contentType.indexOf("application/json") !== -1) {
+                        return response.json().then(data => ({ ok: response.ok, data }));
+                    } else {
+                        // Handle non-JSON response (like 404 HTML or 500 text)
+                        const text = await response.text();
+                        throw new Error(`Server returned non-JSON response: ${response.status} ${response.statusText}`);
+                    }
+                })
                 .then(({ ok, data }) => {
                     if (!ok) throw new Error(data.message || 'Server error');
 
@@ -550,10 +568,18 @@
 
                     contactForm.reset();
                     // Reset custom dropdown UI
-                    if (triggerText) triggerText.textContent = 'Select project type';
-                    if (hiddenInput) hiddenInput.value = '';
-                    options.forEach(opt => opt.classList.remove('selected'));
-                    if (options[0]) options[0].classList.add('selected');
+                    const customSelect = document.querySelector('.custom-select');
+                    if (customSelect) {
+                        const trigger = customSelect.querySelector('.custom-select-trigger');
+                        const triggerText = trigger ? trigger.querySelector('span') : null;
+                        const options = customSelect.querySelectorAll('.custom-option');
+                        const hiddenInput = document.getElementById('project-type');
+
+                        if (triggerText) triggerText.textContent = 'Select project type';
+                        if (hiddenInput) hiddenInput.value = '';
+                        options.forEach(opt => opt.classList.remove('selected'));
+                        if (options[0]) options[0].classList.add('selected');
+                    }
 
                     setTimeout(() => {
                         submitBtn.innerHTML = originalBtnText;
@@ -562,7 +588,8 @@
                     }, 3000);
                 })
                 .catch(error => {
-                    console.error('Submission Error:', error);
+                    console.error('Submission Error Details:', error);
+                    alert(`Submission failed: ${error.message}`);
                     submitBtn.innerHTML = 'Failed! Try Again <i class="ph ph-x-circle"></i>';
                     submitBtn.style.background = 'rgba(239, 68, 68, 0.2)';
                     setTimeout(() => {

@@ -100,7 +100,8 @@ app.post('/api/contact', async (req, res) => {
             res.status(201).json({ success: true, message: 'Sent Successfully!' });
         } catch (mailError) {
             console.error('Nodemailer Error:', mailError);
-            res.status(201).json({ success: true, message: 'Saved (Email Error)' });
+            // Changed to 500 so frontend knows it failed
+            res.status(500).json({ success: false, message: 'Saved to Database, but Email Failed to Send.', error: mailError.message });
         }
     } catch (error) {
         console.error('Database/Server Error:', error);
